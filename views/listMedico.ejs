@@ -1,10 +1,13 @@
 <div class="container">
 	<h1>Lista de Medicos</h1>
-	<table class="table">
+	<div class="col-md-6">
+		<table class="table">
 		<thead>
 			<tr>
 				<th>Nombre</th>
 				<th>Activo</th>
+				<th>Monitoreo</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -12,6 +15,7 @@
 				<tr>
 						<td><%= item.cNombre%></td>
 						<td><%= item.nActivo%></td>
+						<td><%= item.monitoreo%></td>
 						<td>
 							<a class="btn btn-warning" href="/formMedicos/<%= item.idMedico%>">Editar</a>
 							<a class="btn btn-danger" href="/formEditar/<%= item.idMedico%>">Eliminar</a>
@@ -22,3 +26,4 @@
 	</table>
 	<a class="btn btn-primary" href="/addMedico">Agregar</a>
 </div>
+	</div>

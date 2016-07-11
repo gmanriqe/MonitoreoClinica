@@ -51,6 +51,11 @@ module.exports.routes = {
     action: 'formAddMedico'
   },
 
+  "GET /medicos/:pagina/:tamano": {
+    controller: "MedicosController",  
+    action: "listarPaginado"
+  },
+
 
 
   /***************************************************************************
