@@ -20,7 +20,7 @@ module.exports = {
   	},
   	nActivo: {
   		type: 'integer',
-  		dafaultsTo: 0
+  		defaultsTo: 0
   	},
   	monitoreo: {
   		collection: 'Monitoreo',

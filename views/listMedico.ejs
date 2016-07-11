@@ -1,0 +1,24 @@
+<div class="container">
+	<h1>Lista de Medicos</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Activo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% regs.forEach(function(item){ %>
+				<tr>
+						<td><%= item.cNombre%></td>
+						<td><%= item.nActivo%></td>
+						<td>
+							<a class="btn btn-warning" href="/formMedicos/<%= item.idMedico%>">Editar</a>
+							<a class="btn btn-danger" href="/formEditar/<%= item.idMedico%>">Eliminar</a>
+						</td>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+	<a class="btn btn-primary" href="/addMedico">Agregar</a>
+</div>

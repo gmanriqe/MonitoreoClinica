@@ -34,7 +34,24 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'GET /medicos': {
+    controller: 'MonitoreoController',
+    action: 'listarMedicos'
+  },
+
+  'GET /addMedico': {
+    controller: 'MonitoreoController',
+    action: 'addMedico'
+  },
+
+  'POST /formAddMedico': {
+    controller: 'MonitoreoController',
+    action: 'formAddMedico'
+  },
+
+
 
   /***************************************************************************
   *                                                                          *
