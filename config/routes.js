@@ -46,10 +46,17 @@ module.exports.routes = {
     action: 'addMedico'
   },
 
-  "GET /formMedicos/:id": {
-    controller: "MonitoreoController",
-    action: "formEdtMedico"
+  'GET /formMedicos/:id': {
+    controller: 'MonitoreoController',
+    action: 'formEdtMedico'
   },
+
+  'POST /formUpdMedico/:id': {
+        controller: 'MonitoreoController',
+        action: 'formUpdMedico'
+ }
+
+
 
 
   /***************************************************************************

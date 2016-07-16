@@ -44,6 +44,29 @@ module.exports = {
 			});
 	},
 
+	formUpdMedico: function(req, res){
+		var idMedico = req.params.id;
+		var cNombre = req.body.cNombre;
+		var monitoreo = req.body.monitoreo;
+		var filtro = {
+			idMedico:idMedico
+		};
+		var dato = {
+			cNombre:cNombre,
+			monitoreo:monitoreo
+		};
+
+		Medicos
+			.update(filtro, dato)
+			.then( function( registro){
+				console.log(registro);
+				res.redirect('/medicos');
+			})
+			.catch( function( err){
+				res.send(err);
+			});
+	}
+
 
 
 };
