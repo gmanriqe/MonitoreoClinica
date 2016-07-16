@@ -24,22 +24,26 @@ module.exports = {
 		res.view('formAddMedico');
 	},
 
-	formAddMedico: function(req, res){
-		var data = req.allParams();
-		
+	formEdtMedico: function(req, res){
+		var idMedico = req.params.id;
+		var filtro = {
+			idMedico:idMedico
+		};
 		Medicos
-			.create(data)
+			.find()
+			.where(filtro)
 			.then( function(registro){
-				console.log(registro);
-				res.redirect('/medicos');
+				console.log(registro[0]);
+				var data = {
+					regs:registro[0]
+				};
+				res.view('formEdtMedico',data);
 			})
 			.catch( function(err){
-				res.negotiate(err);
-			})
+				res.send(err);
+			});
 	},
 
-	
 
 
 };
-
