@@ -27,18 +27,9 @@
 		<a class="btn btn-primary" href="/addMedico">Agregar</a>
 		<br>
 		<ul class="pagination">
-			<li>
-				<a href="#">&laquo;</a>
-			</li>
-			<li>
-				<a href="#">1 <span class="sr-only">(página actual)</span></a>
-			</li>
-			<li class="active">
-				<a href="#">2 <span class="sr-only">(página actual)</span></a>
-			</li>
-			 <li>
-				 <a href="#">&raquo;</a>
-			 </li>
+			<% for(var i=1; i<=cantPag; i++) { %>
+			<li class="<% if(i==pag){ %><%= "active" %><% } %>"><a href="/medicos/<%= i %>"><%= i %></a></li>
+			<% } %>
 		</ul>
 	</div>
 </div>

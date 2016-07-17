@@ -6,10 +6,10 @@
  */
 
 module.exports = {
-	redireccionarMedicos: function(req, res){
+	redirectMedicos: function(req, res){
 		res.redirect('/medicos/1');
 	},
-	listarMedicos: function(req, res){
+	listMedicos: function(req, res){
 		var pagina = req.params.pag;
 		Medicos
 			.count()
@@ -40,6 +40,19 @@ module.exports = {
 
 	addMedico: function(req, res){
 		res.view('formAddMedico');
+	},
+
+	formAddMedico: function(req, res){
+		var data = req.allParams();
+
+		Medicos
+			.create(data)
+			.then( function( registro){
+				res.redirect('/medicos');
+			})
+			.catch( function(err){
+				res.send(err);
+			});
 	},
 
 	formEdtMedico: function(req, res){

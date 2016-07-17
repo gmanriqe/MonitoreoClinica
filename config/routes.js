@@ -32,38 +32,44 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
-  'GET /medicos': {
-        controller: 'MonitoreoController',
-        action: 'redireccionarMedicos'
- },
- 
-  'GET /medicos/:pag': {
-    controller: 'MonitoreoController',
-    action: 'listarMedicos'
-  },
+      '/': {
+            view: 'homepage'
+      },
 
-  'GET /addMedico': {
-    controller: 'MonitoreoController',
-    action: 'addMedico'
-  },
+      'GET /medicos': {
+            controller: 'MonitoreoController',
+            action: 'redirectMedicos'
+      },
 
-  'GET /formEdtMedicos/:id': {
-    controller: 'MonitoreoController',
-    action: 'formEdtMedico'
-  },
+      'GET /medicos/:pag': {
+            controller: 'MonitoreoController',
+            action: 'listMedicos'
+      },
 
-  'POST /formUpdMedico/:id': {
-        controller: 'MonitoreoController',
-        action: 'formUpdMedico'
-  },
+      'GET /addMedico': {
+            controller: 'MonitoreoController',
+            action: 'addMedico'
+      },
 
-  'GET /formDtyMedicos/:id': {
-        controller: 'MonitoreoController',
-        action: 'formDltMedicos'
-  },
+      'POST /formAddMedico': {
+            controller: 'MonitoreoController',
+            action: 'formAddMedico'
+      },
+
+      'GET /formEdtMedicos/:id': {
+            controller: 'MonitoreoController',
+            action: 'formEdtMedico'
+      },
+
+      'POST /formUpdMedico/:id': {
+            controller: 'MonitoreoController',
+            action: 'formUpdMedico'
+      },
+
+      'GET /formDtyMedicos/:id': {
+            controller: 'MonitoreoController',
+            action: 'formDltMedicos'
+      },
 
 
 
