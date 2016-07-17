@@ -6,17 +6,35 @@
  */
 
 module.exports = {
+	redireccionarMedicos: function(req, res){
+		res.redirect('/medicos/1');
+	},
 	listarMedicos: function(req, res){
+		var pagina = req.params.pag;
 		Medicos
-			.find({nActivo: 0})
-			.sort({cNombre: 'ASC'})
-			.then( function(registroMedicos){
-					res.view('listMedico', {
-						regs: registroMedicos
+			.count()
+			.then( function( cantidadRegistros){
+				var cantidadPaginas= Math.ceil(cantidadRegistros/3);
+				Medicos
+					.find()
+					.sort('cNombre Asc')
+					.paginate({page:pagina, limit:3})
+					.then( function( registro){
+						var data = {
+							regs:registro,
+							pag:pagina,
+							cantPag:cantidadPaginas
+						};
+						console.log(data);
+						res.view('listMedico',data);
+					})
+					.catch( function(err){
+						res.negotiate(err);
 					});
+
 			})
 			.catch( function(err){
-				res.negotiate(err);
+				res.send(err);
 			});
 	},
 
@@ -59,10 +77,22 @@ module.exports = {
 		Medicos
 			.update(filtro, dato)
 			.then( function( registro){
-				console.log(registro);
 				res.redirect('/medicos');
 			})
 			.catch( function( err){
+				res.send(err);
+			});
+	},
+
+	formDltMedicos: function(req, res){
+		var idMedico = req.params.id;
+
+		Medicos
+			.destroy(idMedico)
+			.then( function(registro){
+				res.redirect('/medicos');
+			})
+			.catch( function(err){
 				res.send(err);
 			});
 	}

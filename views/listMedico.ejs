@@ -2,28 +2,43 @@
 	<h1>Lista de Medicos</h1>
 	<div class="col-md-6">
 		<table class="table">
-		<thead>
-			<tr>
-				<th>Nombre</th>
-				<th>Activo</th>
-				<th>Monitoreo</th>
-				<th>Acciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% regs.forEach(function(item){ %>
+			<thead>
 				<tr>
-						<td><%= item.cNombre%></td>
-						<td><%= item.nActivo%></td>
-						<td><%= item.monitoreo%></td>
-						<td>
-							<a class="btn btn-warning" href="/formMedicos/<%= item.idMedico%>">Editar</a>
-							<a class="btn btn-danger" href="/formEditar/<%= item.idMedico%>">Eliminar</a>
-						</td>
+					<th>Nombre</th>
+					<th>Activo</th>
+					<th>Monitoreo</th>
+					<th>Acciones</th>
 				</tr>
-			<% }) %>
-		</tbody>
-	</table>
-	<a class="btn btn-primary" href="/addMedico">Agregar</a>
-</div>
+			</thead>
+			<tbody>
+				<% regs.forEach(function(item){ %>
+					<tr>
+							<td><%= item.cNombre%></td>
+							<td><%= item.nActivo%></td>
+							<td><%= item.monitoreo%></td>
+							<td>
+								<a class="btn btn-warning" href="/formEdtMedicos/<%= item.idMedico%>">Editar</a>
+								<a class="btn btn-danger" href="/formDtyMedicos/<%= item.idMedico%>">Eliminar</a>
+							</td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+		<a class="btn btn-primary" href="/addMedico">Agregar</a>
+		<br>
+		<ul class="pagination">
+			<li>
+				<a href="#">&laquo;</a>
+			</li>
+			<li>
+				<a href="#">1 <span class="sr-only">(página actual)</span></a>
+			</li>
+			<li class="active">
+				<a href="#">2 <span class="sr-only">(página actual)</span></a>
+			</li>
+			 <li>
+				 <a href="#">&raquo;</a>
+			 </li>
+		</ul>
 	</div>
+</div>

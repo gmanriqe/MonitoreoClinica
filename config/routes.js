@@ -35,8 +35,12 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-
   'GET /medicos': {
+        controller: 'MonitoreoController',
+        action: 'redireccionarMedicos'
+ },
+ 
+  'GET /medicos/:pag': {
     controller: 'MonitoreoController',
     action: 'listarMedicos'
   },
@@ -46,7 +50,7 @@ module.exports.routes = {
     action: 'addMedico'
   },
 
-  'GET /formMedicos/:id': {
+  'GET /formEdtMedicos/:id': {
     controller: 'MonitoreoController',
     action: 'formEdtMedico'
   },
@@ -54,7 +58,12 @@ module.exports.routes = {
   'POST /formUpdMedico/:id': {
         controller: 'MonitoreoController',
         action: 'formUpdMedico'
- }
+  },
+
+  'GET /formDtyMedicos/:id': {
+        controller: 'MonitoreoController',
+        action: 'formDltMedicos'
+  },
 
 
 
