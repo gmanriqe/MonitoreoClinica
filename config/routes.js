@@ -94,7 +94,7 @@ module.exports.routes = {
             controller: 'MonitoreoController',
             action: 'formEdtAmbulancia'
       },
-      'GET /formUdpAmbulancia/:id': {
+      'POST /formUdpAmbulancia/:id': {
             controller: 'MonitoreoController',
             action: 'formUdpAmbulancia'
       },
@@ -125,7 +125,7 @@ module.exports.routes = {
             controller: 'MonitoreoController',
             action: 'formEdtParamedicos'
       },
-      'GET /formUpdParamedico/:id': {
+      'POST /formUpdParamedico/:id': {
             controller: 'MonitoreoController',
             action: 'formUpdParamedico'
       },
@@ -136,7 +136,30 @@ module.exports.routes = {
 
 
 
-      
+      'GET /estados': {
+            controller: 'MonitoreoController',
+            action: 'listEstados'
+      },
+      'GET /addEstados': {
+            controller: 'MonitoreoController',
+            action: 'addEstados'
+      },
+      'POST /formAddEstado': {
+            controller: 'MonitoreoController',
+            action: 'formAddEstado'
+      },
+      'GET /formEdtEstados/:id': {
+            controller: 'MonitoreoController',
+            action: 'formEdtEstados'
+      },
+      'POST /formUpdEstados/:id': {
+            controller: 'MonitoreoController',
+            action: 'formUpdEstados'
+      },
+      'GET /formDtyEstados/:id' : {
+            controller: 'MonitoreoController',
+            action: 'formDtyEstados'
+      }
 
 
 

@@ -1,0 +1,28 @@
+<div class="container">
+	<h1>Lista de Estados</h1>
+	<div class="col-md-6">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Estado</th>
+					<th>Estado</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% regs.forEach(function(item){ %>
+					<tr>
+							<td><%= item.cEstado%></td>
+							<td><%= item.nActivo%></td>
+							<td>
+								<a class="btn btn-warning" href="/formEdtEstados/<%= item.idEstado%>">Editar</a>
+								<a class="btn btn-danger" href="/formDtyEstados/<%= item.idEstado%>">Eliminar</a>
+							</td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+            <a class="btn btn-primary" href="/addEstados">Agregar</a>
+		<br>
+	</div>
+</div>

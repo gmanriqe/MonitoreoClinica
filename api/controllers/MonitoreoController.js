@@ -308,5 +308,88 @@ module.exports = {
 
 
 
+	listEstados: function(req, res){
+		Estados
+			.find()
+			.then( function(registro){
+				var datos = {
+					regs:registro
+				};
+				res.view('listEstados', datos);
+			})
+			.catch( function(err){
+				res.send(err);
+			});
+	},
+	addEstados: function(req,res){
+		res.view('formAddEstado');
+	},
+	formAddEstado: function(req, res){
+		var cEstado = req.body.cEstado;
+		var nActivo = req.body.nActivo;
+		var dato = {
+			cEstado:cEstado,
+			nActivo:nActivo
+		};
+		console.log(dato);
+		Estados
+			.create(dato)
+			.then( function(registro){
+				res.redirect('/estados');
+			})
+			.catch( function(err){
+				console.log(err);
+			});
+	},
+	formEdtEstados: function(req, res){
+		var idEstado = req.params.id;
+		var filtro = {
+			idEstado:idEstado
+		};
+		Estados
+			.find()
+			.where(filtro)
+			.then( function( registro){
+				var dato = {
+					regs:registro[0]
+				};
+				res.view('formEdtEstado',dato);
+			})
+			.catch( function( err){
+				res.negotiate(err);
+			});
+	},
+	formUpdEstados: function(req, res){
+		var idEstado = req.params.id;
+		var cEstado = req.body.cEstado;
+		var nActivo = req.body.nActivo;
+
+		var filtro = {
+			idEstado:idEstado
+		};
+		var dato = {
+			cEstado:cEstado,
+			nActivo:nActivo
+		};
+		Estados
+			.update(filtro, dato)
+			.then( function(registro){
+				res.redirect('/estados');
+			})
+			.catch( function(err){
+				res.send(err);
+			});
+	},
+	formDtyEstados: function(req, res){
+		var idEstado = req.params.id;
+		Estados
+			.destroy(idEstado)
+			.then( function(registro){
+				res.redirect('/estados');
+			})
+			.catch( function(err){
+				console.log(err);
+			});
+	}
 
 };
