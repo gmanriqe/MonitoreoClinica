@@ -1,0 +1,35 @@
+<div class="container">
+	<h1>Lista de Paramedicos</h1>
+	<div class="col-md-6">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Activo</th>
+					<th>Monitoreo</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% regs.forEach(function(item){ %>
+					<tr>
+							<td><%= item.cNombre%></td>
+							<td><%= item.nActivo%></td>
+							<td><%= item.monitoreo%></td>
+							<td>
+								<a class="btn btn-warning" href="/formEdtParamedicos/<%= item.idParamedico%>">Editar</a>
+								<a class="btn btn-danger" href="/formDtyParamedicos/<%= item.idParamedico%>">Eliminar</a>
+							</td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+		<a class="btn btn-primary" href="/addParamedicos">Agregar</a>
+		<br>
+		<ul class="pagination">
+			<% for(var i=1; i<=cantPag; i++) { %>
+			<li class="<% if(i==pag){ %><%= "active" %><% } %>"><a href="/medicos/<%= i %>"><%= i %></a></li>
+			<% } %>
+		</ul>
+	</div>
+</div>

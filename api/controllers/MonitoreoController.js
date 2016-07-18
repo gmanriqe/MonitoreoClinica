@@ -210,4 +210,103 @@ module.exports = {
 			});
 	},
 
+
+
+
+	redirectParamedicos: function(req, res){
+		res.redirect('/paramedicos/1');
+	},
+	listParamedicos: function(req, res){
+		var pagina = req.params.pag;
+		Paramedicos
+			.count()
+			.then( function( cantidadRegistros){
+				cantidadPaginas= Math.ceil(cantidadRegistros/3);
+				Paramedicos
+					.find()
+					.paginate({page:pagina, limit:3})
+					.then( function( registro){
+						var data = {
+							regs:registro,
+							pag:pagina,
+							cantPag:cantidadPaginas
+						};
+						res.view('listParamedicos',data);
+					})
+					.catch( function(err){
+						res.negotiate(err);
+					});
+
+
+			})
+			.catch( function(err){
+				res.send(err);
+			});
+	},
+	addParamedicos: function(req, res){
+		res.view('formAddParamedico');
+	},
+	formAddParamedico: function(req, res){
+		var dato = req.allParams();
+		console.log(dato);
+		Paramedicos
+			.create(dato)
+			.then( function(registro){
+				res.redirect('/paramedicos');
+			})
+			.catch( function(err){
+				res.send(err);
+			});
+	},
+	formEdtParamedicos: function(req, res){
+		var idParamedico = req.params.id;
+		var filtro = {
+			idParamedico:idParamedico
+		};
+		Paramedicos
+			.find(filtro)
+			.then( function(registro){
+				var data = {
+					regs:registro[0]
+				};
+				console.log('--Edit--');
+				console.log(data);
+				res.view('formEdtParamedico',data);
+			});
+	},
+	formUpdParamedico: function(req, res){
+		var idParamedico = req.params.id;
+		var cNombre = req.body.cNombre;
+		var monitoreo = req.body.monitoreo;
+		var filtro = {
+			idParamedico:idParamedico
+		};
+		var dato = {
+			cNombre:cNombre,
+			monitoreo:monitoreo
+		};
+		Paramedicos
+			.update(filtro, dato)
+			.then( function(registro){
+				res.redirect('/paramedicos');
+			})
+			.catch( function(err){
+				res.negotiate(err);
+			});
+	},
+	formDtyParamedicos: function(req, res){
+		var idParamedico = req.params.id;
+		Paramedicos
+			.destroy(idParamedico)
+			.then( function( registro){
+				res.redirect('/paramedicos');
+			})
+			.catch( function( err){
+				res.send( err);
+			});
+	},
+
+
+
+
 };

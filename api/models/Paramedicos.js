@@ -22,7 +22,7 @@ module.exports = {
   		type: 'integer',
   		defaultsTo: 0
   	},
-  	monitore: {
+  	monitoreo: {
   		model: 'Monitoreo'
   	},
   	createdAt: {
@@ -35,4 +35,3 @@ module.exports = {
   	}
   }
 };
-

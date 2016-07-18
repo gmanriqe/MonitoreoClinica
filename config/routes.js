@@ -105,9 +105,40 @@ module.exports.routes = {
 
 
 
-      '':{
+      'GET /paramedicos':{
+            controller: 'MonitoreoController',
+            action: 'redirectParamedicos'
+      },
+      'GET /paramedicos/:pag': {
+            controller: 'MonitoreoController',
+            action: 'listParamedicos'
+      },
+      'GET /addParamedicos': {
+            controller: 'MonitoreoController',
+            action: 'addParamedicos'
+      },
+      'POST /formAddParamedico': {
+            controller: 'MonitoreoController',
+            action: 'formAddParamedico'
+      },
+      'GET /formEdtParamedicos/:id': {
+            controller: 'MonitoreoController',
+            action: 'formEdtParamedicos'
+      },
+      'GET /formUpdParamedico/:id': {
+            controller: 'MonitoreoController',
+            action: 'formUpdParamedico'
+      },
+      'GET /formDtyParamedicos/:id': {
+            controller: 'MonitoreoController',
+            action: 'formDtyParamedicos'
+      },
 
-      }
+
+
+      
+
+
 
 
   /***************************************************************************
