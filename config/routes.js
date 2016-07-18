@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
       '/': {
-            view: 'homepage'
+            view: 'homepage',
       },
 
       'GET /medicos': {
@@ -68,10 +68,46 @@ module.exports.routes = {
 
       'GET /formDtyMedicos/:id': {
             controller: 'MonitoreoController',
-            action: 'formDltMedicos'
+            action: 'formDtyMedicos'
       },
 
 
+
+
+      'GET /ambulancias': {
+            controller: 'MonitoreoController',
+            action: 'redirectAmbulancias'
+      },
+      'GET /ambulancias/:pagina/:tamano':{
+            controller: 'MonitoreoController',
+            action: 'listAmbulancia'
+      },
+      'GET /addAmbulancia': {
+            controller: 'MonitoreoController',
+            action: 'addAmbulancia'
+      },
+      'POST /formAddAmbulancia': {
+            controller: 'MonitoreoController',
+            action: 'formAddAmbulancia'
+      },
+      'GET /formEdtAmbulancia/:id': {
+            controller: 'MonitoreoController',
+            action: 'formEdtAmbulancia'
+      },
+      'GET /formUdpAmbulancia/:id': {
+            controller: 'MonitoreoController',
+            action: 'formUdpAmbulancia'
+      },
+      'GET /formDtyAmbulancia/:id': {
+            controller: 'MonitoreoController',
+            action: 'formDtyAmbulancia'
+      },
+
+
+
+      '':{
+
+      }
 
 
   /***************************************************************************

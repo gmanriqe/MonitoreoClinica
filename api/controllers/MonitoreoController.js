@@ -97,7 +97,7 @@ module.exports = {
 			});
 	},
 
-	formDltMedicos: function(req, res){
+	formDtyMedicos: function(req, res){
 		var idMedico = req.params.id;
 
 		Medicos
@@ -108,8 +108,106 @@ module.exports = {
 			.catch( function(err){
 				res.send(err);
 			});
-	}
+	},
 
 
+
+
+	redirectAmbulancias: function(req, res){
+		res.redirect('/ambulancias/1/1');
+	},
+
+	listAmbulancia: function(req, res){
+		var pag = req.params.pagina;
+		var limit = req.params.tamano;
+		var paginado = {
+			pag:pag,
+			limit:limit
+		};
+		Ambulancias
+			.find()
+			.sort({nNumero: 'ASC'})
+			.paginate(paginado)
+			.then( function( registro){
+				var data = {
+					regs:registro,
+					pags:paginado
+				};
+				console.log(data);
+				res.view('listAmbulancia', data);
+			})
+			.catch( function( err){
+				res.send(err);
+			});
+	},
+
+	addAmbulancia: function(req, res){
+		res.view('formAddAmbulancia');
+	},
+
+	formAddAmbulancia: function(req, res){
+		var datos = req.allParams();
+		console.log(datos);
+		Ambulancias
+			.create(datos)
+			.then( function(registro){
+				console.log(registro);
+				res.redirect('/ambulancias');
+			})
+			.catch( function(err){
+				res.send(err);
+			});
+	},
+
+	formEdtAmbulancia: function(req, res){
+		var idAmbulancia = req.params.id;
+		Ambulancias
+			.find({idAmbulancia:idAmbulancia})
+			.then( function( registro){
+				var data = {
+					regs:registro[0]
+				};
+				res.view('formEdtAmbulancia',data);
+			})
+			.catch( function( err){
+				res.send(err);
+			});
+	},
+
+	formUdpAmbulancia: function(req, res){
+		var idAmbulancia = req.params.id;
+		var nNumero = req.body.nNumero;
+		var monitoreo = req.body.monitoreo;
+
+		var filtro = {
+			idAmbulancia:idAmbulancia
+		};
+		var datos = {
+			nNumero:nNumero,
+			monitoreo:monitoreo
+		};
+		Ambulancias
+			.update(filtro,datos)
+			.then( function( registro){
+				// res.send(registro);
+				res.redirect('/ambulancias');
+			})
+			.catch( function( err){
+				res.send(err);
+			});
+	},
+
+	formDtyAmbulancia: function(req, res){
+		var idAmbulancia = req.params.id;
+
+		Ambulancias
+			.destroy(idAmbulancia)
+			.then( function(registro){
+				res.redirect('/ambulancias');
+			})
+			.catch( function(err){
+				res.send(err);
+			});
+	},
 
 };

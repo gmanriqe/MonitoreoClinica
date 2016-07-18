@@ -1,0 +1,31 @@
+<div class="container">
+	<h1>Lista de Ambulancias</h1>
+	<div class="col-md-6">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Numero Ambulancia</th>
+					<th>Activo</th>
+					<th>Monitoreo</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% regs.forEach(function(reg){ %>
+					<tr>
+							<td><%= reg.nNumero%></td>
+							<td><%= reg.nActivo%></td>
+							<td><%= reg.monitoreo%></td>
+							<td>
+								<a class="btn btn-warning" href="/formEdtAmbulancia/<%= reg.idAmbulancia%>">Editar</a>
+								<a class="btn btn-danger" href="/formDtyAmbulancia/<%= reg.idAmbulancia%>">Eliminar</a>
+							</td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+		<a class="btn btn-primary" href="/addAmbulancia">Agregar</a>
+		<br>
+
+	</div>
+</div>

@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-  	idAmbulancias: {
+  	idAmbulancia: {
   		primaryKey: true,
   		autoincrement: true,
   		unique: true,
@@ -19,20 +19,19 @@ module.exports = {
   		required: true
   	},
   	nActivo : {
-  		type: 'boolean',
+            type: 'integer',
   		defaultsTo: 0
   	},
   	monitoreo: {
   		model: 'Monitoreo'
   	},
   	createdAt: {
-      type: 'datetime',
-      columnName: 'cre_dt'
-    },
-    updatedAt: {
-      type: 'datetime',
-      columnName: 'upd_dt'
-    },
+            type: 'datetime',
+            columnName: 'cre_dt'
+      },
+      updatedAt: {
+            type: 'datetime',
+            columnName: 'upd_dt'
+      },
   }
 };
-
